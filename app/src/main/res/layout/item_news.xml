@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="newsModel"
+            type="com.nytimes.android.news.models.NewsModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_10dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_10dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/colorBlack"
+            android:text="@{newsModel.title}"
+            app:layout_constraintEnd_toStartOf="@id/ivArrow"
+            app:layout_constraintStart_toEndOf="@id/ivNews"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="title news" />
+
+        <TextView
+            android:id="@+id/tvByLine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_10dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{newsModel.byline}"
+            android:textColor="@color/colorGrey"
+            app:layout_constraintBottom_toTopOf="@id/tvDate"
+            app:layout_constraintEnd_toStartOf="@id/ivArrow"
+            app:layout_constraintStart_toEndOf="@id/ivNews"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            tools:text="by philippe chami" />
+
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_10dp"
+            android:ellipsize="end"
+            android:text="@{newsModel.publishedDate}"
+            android:maxLines="1"
+            android:textColor="@color/colorGrey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivArrow"
+            app:layout_constraintStart_toEndOf="@id/ivNews"
+            tools:text="27-10-2020" />
+
+        <ImageView
+            android:id="@+id/ivArrow"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivNews"
+            android:layout_width="75dp"
+            app:imageUrl="@{newsModel.getThumbnail}"
+            android:layout_height="75dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

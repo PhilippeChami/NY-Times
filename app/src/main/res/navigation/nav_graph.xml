@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mostViewedNewsFragment">
+
+    <fragment
+        android:id="@+id/mostViewedNewsFragment"
+        android:name="com.nytimes.android.news.presentation.ui.fragments.MostViewedNewsFragment"
+        android:label="MostViewedNewsFragment" >
+        <action
+            android:id="@+id/action_mostViewedNewsFragment_to_mostViewedDetailsFragment"
+            app:destination="@id/mostViewedDetailsFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/mostViewedDetailsFragment"
+        android:name="com.nytimes.android.news.presentation.ui.fragments.MostViewedDetailsFragment"
+        android:label="MostViewedDetailsFragment" >
+        <argument
+            android:name="newModel"
+            app:argType="com.nytimes.android.news.models.NewsModel" />
+
+    </fragment>
+
+</navigation>
